@@ -49,6 +49,7 @@ h3 {
 .project-form {
   text-align: center;
   display: none;
+  margin: 20px 0;
 }
 .project-form input {
   width: 100%;
@@ -57,6 +58,23 @@ h3 {
   width: 80px;
   height: 30px;
   font-size: 1rem;
+}
+.project-title {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.delete-project-button {
+  font-size: 1.2rem;
+  font-family: "Mouse Memoirs", sans-serif;
+  background-color: transparent;
+  border: 0;
+  border-radius: 20px;
+}
+.delete-project-button:hover {
+  background-color: beige;
 }
 .tasks-container {
   flex-grow: 1;
