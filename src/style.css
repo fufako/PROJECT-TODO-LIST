@@ -39,3 +39,11 @@ h3 {
 .tasks-container {
   flex-grow: 1;
 }
+.title {
+  font-size: 2rem;
+  background-color: aquamarine;
+  text-align: center;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 5px;
+}
