@@ -1,6 +1,5 @@
 import "./style.css"
-import { loadUI } from "./UI"
-import { filterTasks } from "./UI"
+import { loadUI, setTitle } from "./UI"
 
 loadUI()
-filterTasks()
+setTitle()

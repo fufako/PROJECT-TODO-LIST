@@ -31,13 +31,48 @@ h3 {
 .tasks-filter p {
   margin: 20px;
   font-size: 1.5rem;
+  width: fit-content;
+  cursor: pointer;
 }
 .projects-container p {
   margin: 20px;
   font-size: 1.5rem;
+  width: fit-content;
+  cursor: pointer;
+}
+.add-project {
+  margin: 20px;
+  font-size: 1.5rem;
+  width: fit-content;
+  cursor: pointer;
+}
+.project-form {
+  text-align: center;
+}
+.project-form input {
+  width: 100%;
+}
+.project-form button {
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
 }
 .tasks-container {
   flex-grow: 1;
+}
+.add-task-container {
+  text-align: center;
+}
+#add-new-task {
+  font-size: 1.5rem;
+  height: 40px;
+  width: 120px;
+  background-color: aquamarine;
+  border: 0;
+  cursor: pointer;
+}
+#add-new-task:hover {
+  background-color: rgba(127, 255, 212, 0.6);
 }
 .title {
   font-size: 2rem;

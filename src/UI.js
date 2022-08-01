@@ -12,17 +12,23 @@ export function loadUI() {
         </div>
         
         <h3>Projects</h3>
-        <div class="projects-container"> 
-        <p>Add Project</p>
+        <p class="add-project">Add Project</p>
+        <div class="projects-container">
+        <div class="project-form">
+        <input type="text" />
+        <button>Add</button>
+        <button>Cancel</button>
+        </div>
         </div>
       </div>
       <div class="tasks-container">
       <div class="title"> All tasks</div>
+      <div class="add-task-container"><button id="add-new-task"> + </button> </div>
       </div>
     </div>`
 }
 
-export function filterTasks() {
+export function setTitle() {
   const title = document.querySelector(".title")
   const filterButtons = document.querySelectorAll("div.tasks-filter > p")
   filterButtons.forEach((button) => {
@@ -30,4 +36,9 @@ export function filterTasks() {
       title.innerHTML = button.innerHTML
     })
   })
+}
+
+function addProject() {
+  const projectContainer = document.querySelector(".projects-container")
+  const newProject = document.createElement("div")
 }
