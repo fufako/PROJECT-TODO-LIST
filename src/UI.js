@@ -15,7 +15,7 @@ export function loadUI() {
         <p class="add-project-title">Add Project</p>
         <div class="projects-container">
         <div class="project-form">
-        <input type="text" />
+        <input type="text" id="project-input" placeholder="Enter Project Name" maxlength="24"/>
         <button id="add-project">Add</button>
         <button id="cancel">Cancel</button>
         </div>
@@ -37,10 +37,21 @@ export function setTitle() {
     })
   })
 }
+export function projectAddingHelper() {
+  const addProjectBtn = document.querySelector(".add-project-title")
+  addProjectBtn.addEventListener("click", showProjectForm)
+
+  const addBtn = document.querySelector("#add-project")
+  addBtn.addEventListener("click", addProject)
+
+  const cancelBtn = document.querySelector("#cancel")
+  cancelBtn.addEventListener("click", hideProjectForm)
+}
 
 export function showProjectForm() {
   const projectForm = document.querySelector(".project-form")
   projectForm.style.display = "inherit"
+  document.querySelector("#project-input").focus()
 }
 
 export function hideProjectForm() {
@@ -49,10 +60,23 @@ export function hideProjectForm() {
 }
 export function addProject() {
   const projectsContainer = document.querySelector(".projects-container")
-
+  const projectForm = document.querySelector(".project-form")
   const newProject = document.createElement("div")
+  newProject.className = "project-title"
+
   const deleteBtn = document.createElement("button")
-  newProject.textContent = "Project #1"
+  deleteBtn.textContent = "Delete"
+  deleteBtn.className = "delete-project-button"
+  deleteBtn.addEventListener("click", deleteProject)
+
+  const projectName = document.querySelector("#project-input")
+
+  newProject.textContent = projectName.value
   newProject.appendChild(deleteBtn)
   projectsContainer.appendChild(newProject)
+  projectName.value = ""
+  hideProjectForm()
+}
+function deleteProject() {
+  this.parentElement.remove()
 }
