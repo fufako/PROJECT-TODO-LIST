@@ -12,12 +12,12 @@ export function loadUI() {
         </div>
         
         <h3>Projects</h3>
-        <p class="add-project">Add Project</p>
+        <p class="add-project-title">Add Project</p>
         <div class="projects-container">
         <div class="project-form">
         <input type="text" />
-        <button>Add</button>
-        <button>Cancel</button>
+        <button id="add-project">Add</button>
+        <button id="cancel">Cancel</button>
         </div>
         </div>
       </div>
@@ -38,7 +38,21 @@ export function setTitle() {
   })
 }
 
-function addProject() {
-  const projectContainer = document.querySelector(".projects-container")
+export function showProjectForm() {
+  const projectForm = document.querySelector(".project-form")
+  projectForm.style.display = "inherit"
+}
+
+export function hideProjectForm() {
+  const projectForm = document.querySelector(".project-form")
+  projectForm.style.display = "none"
+}
+export function addProject() {
+  const projectsContainer = document.querySelector(".projects-container")
+
   const newProject = document.createElement("div")
+  const deleteBtn = document.createElement("button")
+  newProject.textContent = "Project #1"
+  newProject.appendChild(deleteBtn)
+  projectsContainer.appendChild(newProject)
 }

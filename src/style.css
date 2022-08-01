@@ -40,7 +40,7 @@ h3 {
   width: fit-content;
   cursor: pointer;
 }
-.add-project {
+.add-project-title {
   margin: 20px;
   font-size: 1.5rem;
   width: fit-content;
@@ -48,6 +48,7 @@ h3 {
 }
 .project-form {
   text-align: center;
+  display: none;
 }
 .project-form input {
   width: 100%;
