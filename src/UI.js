@@ -5,10 +5,10 @@ export function loadUI() {
       <div class="sidebar">
         <h3>Home</h3>
         <div class="tasks-filter">
-          <p>All Tasks</p>
-          <p>Today</p>
-          <p>Next 7 Days</p>
-          <p>Important</p>
+          <p id="all-tasks" >All Tasks</p>
+          <p id="today">Today</p>
+          <p id="next-7-days">Next 7 Days</p>
+          <p id="important">Important</p>
         </div>
         
         <h3>Projects</h3>
@@ -16,6 +16,18 @@ export function loadUI() {
         <p>Add Project</p>
         </div>
       </div>
-      <div class="tasks-container">hello :)</div>
+      <div class="tasks-container">
+      <div class="title"> All tasks</div>
+      </div>
     </div>`
+}
+
+export function filterTasks() {
+  const title = document.querySelector(".title")
+  const filterButtons = document.querySelectorAll("div.tasks-filter > p")
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      title.innerHTML = button.innerHTML
+    })
+  })
 }
