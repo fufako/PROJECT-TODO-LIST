@@ -4,6 +4,7 @@ import DeleteImg from "./images/delete.png"
 import checkmarkImg from "./images/checkmark.png"
 import { Task } from "./Task"
 import { allTasks } from "./index"
+import removeArrayItem from "remove-item-from-array"
 
 export function taskAddingHelper() {
   const addTaskBtn = document.querySelector("#add-new-task")
@@ -15,8 +16,8 @@ export function taskAddingHelper() {
   const cancelBtn = document.querySelector(".cancel-task")
   cancelBtn.addEventListener("click", hideTaskForm)
 }
-
-export function addNewTask(taskName, taskDetails, taskDate) {
+//Adds to HTML
+export function addNewTask(taskName, taskDetails, taskDate, taskID) {
   const taskContainer = document.querySelector(".tasks-container")
 
   //Create new task DOM elements
@@ -33,6 +34,7 @@ export function addNewTask(taskName, taskDetails, taskDate) {
   //Add class names to new elements
 
   newTask.className = "new-task"
+  newTask.dataset.id = taskID
   checkbox.className = "checkbox"
   newTaskInfo.className = "new-task-info"
   newTaskTitle.className = "new-task-title"
@@ -41,6 +43,7 @@ export function addNewTask(taskName, taskDetails, taskDate) {
   isImportant.src = Star
   deleteBtn.className = "delete-task-button"
   deleteBtn.src = DeleteImg
+  deleteBtn.addEventListener("click", deleteTask)
 
   newTaskTitle.innerHTML = taskName
   newTaskDetails.innerHTML = taskDetails
@@ -58,13 +61,16 @@ export function addNewTask(taskName, taskDetails, taskDate) {
 
   taskContainer.appendChild(newTask)
 }
+//Adds Task object to allTasks array
+let taskID = 0
 function createNewTask() {
   const inputName = document.querySelector("#inputTitle").value
   const inputDetails = document.querySelector("#inputDetail").value
   const inputDate = document.querySelector("#inputDate").value
-  const newTask = new Task(inputName, inputDetails, inputDate)
+  const newTask = new Task(inputName, inputDetails, inputDate, taskID)
   allTasks.push(newTask)
-  addNewTask(newTask.name, newTask.details, newTask.dueDate)
+  addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
+  taskID++
   hideTaskForm()
   console.log(allTasks)
 }
@@ -80,4 +86,17 @@ function hideTaskForm() {
     input.value = ""
   })
 }
-function addTask() {}
+
+function deleteTask(e) {
+  let taskToDelete = e.target.parentNode
+  let id = taskToDelete.dataset.id
+  let selectedTask = findSelectedTask(id)
+  let index = allTasks.indexOf(selectedTask)
+  allTasks.splice(index, 1)
+  taskToDelete.remove()
+  console.log(allTasks)
+}
+function findSelectedTask(id) {
+  let selectedTask = allTasks.find((task) => task.id == id)
+  if (selectedTask) return selectedTask
+}
