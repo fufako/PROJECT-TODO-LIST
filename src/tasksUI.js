@@ -2,19 +2,21 @@ import Star from "./images/notImportant.png"
 import StarFull from "./images/isImportant.png"
 import DeleteImg from "./images/delete.png"
 import checkmarkImg from "./images/checkmark.png"
+import { Task } from "./Task"
+import { allTasks } from "./index"
 
 export function taskAddingHelper() {
   const addTaskBtn = document.querySelector("#add-new-task")
   addTaskBtn.addEventListener("click", showTaskForm)
 
   const addBtn = document.querySelector(".add-task")
-  addBtn.addEventListener("click", addNewTask)
+  addBtn.addEventListener("click", createNewTask)
 
   const cancelBtn = document.querySelector(".cancel-task")
   cancelBtn.addEventListener("click", hideTaskForm)
 }
 
-function addNewTask() {
+export function addNewTask(taskName, taskDetails, taskDate) {
   const taskContainer = document.querySelector(".tasks-container")
 
   //Create new task DOM elements
@@ -28,6 +30,8 @@ function addNewTask() {
   const isImportant = document.createElement("img")
   const deleteBtn = document.createElement("img")
 
+  //Add class names to new elements
+
   newTask.className = "new-task"
   checkbox.className = "checkbox"
   newTaskInfo.className = "new-task-info"
@@ -38,12 +42,13 @@ function addNewTask() {
   deleteBtn.className = "delete-task-button"
   deleteBtn.src = DeleteImg
 
-  newTaskTitle.innerHTML = document.querySelector("#inputTitle").value
-  newTaskDetails.innerHTML = document.querySelector("#inputDetail").value
+  newTaskTitle.innerHTML = taskName
+  newTaskDetails.innerHTML = taskDetails
+  date.innerHTML = taskDate
+
+  //Append new elements
   newTaskInfo.appendChild(newTaskTitle)
   newTaskInfo.appendChild(newTaskDetails)
-
-  date.innerHTML = document.querySelector("#inputDate").value
 
   newTask.appendChild(checkbox)
   newTask.appendChild(newTaskInfo)
@@ -52,7 +57,16 @@ function addNewTask() {
   newTask.appendChild(deleteBtn)
 
   taskContainer.appendChild(newTask)
+}
+function createNewTask() {
+  const inputName = document.querySelector("#inputTitle").value
+  const inputDetails = document.querySelector("#inputDetail").value
+  const inputDate = document.querySelector("#inputDate").value
+  const newTask = new Task(inputName, inputDetails, inputDate)
+  allTasks.push(newTask)
+  addNewTask(newTask.name, newTask.details, newTask.dueDate)
   hideTaskForm()
+  console.log(allTasks)
 }
 function showTaskForm() {
   const taskForm = document.querySelector(".inputField")
@@ -66,3 +80,4 @@ function hideTaskForm() {
     input.value = ""
   })
 }
+function addTask() {}

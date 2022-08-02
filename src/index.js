@@ -1,10 +1,12 @@
 import "./style.css"
-import { loadUI, setTitle } from "./UI"
+import { loadUI, createEventListener } from "./UI"
 import { projectAddingHelper } from "./projectsUI"
 import { taskAddingHelper } from "./tasksUI"
+import { Task } from "./Task"
+export const allTasks = []
 
 loadUI()
-setTitle()
+createEventListener()
 
 projectAddingHelper()
 taskAddingHelper()

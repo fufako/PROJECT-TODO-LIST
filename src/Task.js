@@ -1,6 +1,7 @@
 export class Task {
-  constructor(name, dueDate, isImportant) {
+  constructor(name, details, dueDate, isImportant = false) {
     this.name = name
+    this.details = details
     this.dueDate = dueDate
     this.isImportant = isImportant
   }
