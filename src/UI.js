@@ -24,7 +24,27 @@ export function loadUI() {
       <div class="tasks-container">
       <div class="title"> All tasks</div>
       <div class="add-task-container"><button id="add-new-task"> + </button> </div>
+      <div class="inputField">
+      <label>Title:</label>
+      <input type="text" class="taskInputs" id="inputTitle" placeholder="What to do?" />
+      <label>Details(optional):</label>
+      <textarea
+        type="text"
+        id="inputDetail"
+        class="taskInputs"
+        placeholder="How about nothing?"
+        wrap="hard"
+      ></textarea>
+      <label>Date:</label>
+      <input type="date" class="taskInputs" id="inputDate" />
+      <div class="formButtons">
+        <input type="submit" class="add-task" value="Add" />
+        <input type="button" class="cancel-task" value="Cancel" />
       </div>
+    </div>
+    <div class="new-task"><div class="checkbox"></div><div class="new-task-info"><div class="new-task-title">11</div><div class="new-task-details">21</div></div><div>0001-03-13</div><span></span><button class="delete-project-button "></button></div>
+      </div>
+      
     </div>`
 }
 
@@ -57,6 +77,8 @@ export function showProjectForm() {
 
 export function hideProjectForm() {
   const projectForm = document.querySelector(".project-form")
+  const userInput = document.querySelector("#project-input")
+  userInput.value = ""
   projectForm.style.display = "none"
 }
 export function addProject() {
@@ -85,8 +107,6 @@ export function addProject() {
     title.innerHTML = projectTitle.innerText
   })
 
-  //Reset input value and hide the form
-  projectName.value = ""
   hideProjectForm()
 }
 function deleteProject() {

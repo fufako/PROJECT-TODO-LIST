@@ -83,8 +83,50 @@ h3 {
 .tasks-container {
   flex-grow: 1;
 }
+.inputField {
+  display: none;
+  flex-direction: column;
+  box-sizing: content-box;
+}
 .add-task-container {
   text-align: center;
+}
+.new-task {
+  display: flex;
+  align-items: flex-start;
+  height: auto;
+  padding: 0;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  border: solid 1.5px var(--textColor);
+  transition: transform 100ms ease-in-out;
+}
+.new-task-info {
+  flex: 1;
+}
+.delete-task-button {
+  border-radius: 20px;
+  font-weight: bolder;
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: 0;
+}
+.new-task-details {
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  overflow-wrap: normal;
+}
+.new-task-title {
+  font-size: 1.2rem;
+}
+.checkbox {
+  width: 13px;
+  height: 13px;
+  border: solid 2px var(--textColor);
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-top: 10px;
+  flex-shrink: 0;
 }
 #add-new-task {
   font-size: 1.5rem;
