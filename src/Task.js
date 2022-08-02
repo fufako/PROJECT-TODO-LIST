@@ -1,4 +1,4 @@
-class Task {
+export class Task {
   constructor(name, dueDate, isImportant) {
     this.name = name
     this.dueDate = dueDate

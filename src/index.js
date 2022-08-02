@@ -1,5 +1,6 @@
 import "./style.css"
-import { loadUI, setTitle, projectAddingHelper } from "./UI"
+import { loadUI, setTitle } from "./UI"
+import { projectAddingHelper } from "./projectsUI"
 import { taskAddingHelper } from "./tasksUI"
 
 loadUI()
