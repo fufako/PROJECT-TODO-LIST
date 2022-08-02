@@ -5,8 +5,6 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
-    tasks: "./src/tasks.js",
-    UI: "./src/UI.js",
   },
   output: {
     filename: "[name].bundle.js",
