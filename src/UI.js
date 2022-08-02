@@ -1,4 +1,5 @@
-import { format, formatDistance, formatRelative, subDays } from "date-fns"
+import { format, add, parseISO } from "date-fns"
+import { addDays } from "date-fns/esm"
 import { allTasks } from "."
 import { addNewTask } from "./tasksUI"
 const body = document.body
@@ -93,9 +94,13 @@ function displayToday() {
 }
 
 function displayThisWeek() {
-  //const today = new Date()
-  // const nextWeek = new Date(today)
-  // nextWeek.setDate(nextWeek.getDate()+7)
+  const today = format(new Date(), "yyyy-MM-dd")
+  const nextWeek = addDays(parseISO(today), 7)
+  allTasks.forEach((task) => {
+    if (task.dueDate >= today && task.dueDate <= nextWeek) {
+      addNewTask(task.name, task.details, task.dueDate)
+    }
+  })
 }
 
 function clearContent() {
