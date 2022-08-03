@@ -107,8 +107,9 @@ function createNewTask() {
   } else {
     addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
   }
-
+  localStorage.setItem("newTask", JSON.stringify(newTask))
   allTasks.push(newTask)
+  localStorage.setItem("allTasks", JSON.stringify(allTasks))
 
   taskID++
   hideTaskForm()
@@ -134,6 +135,7 @@ function deleteTask(e) {
   let selectedTask = findSelectedTask(id)
   let index = allTasks.indexOf(selectedTask)
   allTasks.splice(index, 1)
+  localStorage.setItem("allTasks", JSON.stringify(allTasks))
   taskToDelete.remove()
   console.log(index)
   console.log(allTasks)
