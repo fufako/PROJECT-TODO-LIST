@@ -23,6 +23,7 @@ export function addNewTask(
   taskDetails,
   taskDate,
   taskID,
+  projectName,
   checkImportant
 ) {
   const taskContainer = document.querySelector(".tasks-container")
@@ -52,6 +53,7 @@ export function addNewTask(
     isImportant.src = StarFull
     isImportant.className = "important"
   } else {
+    console.log("yeah i was right")
     isImportant.src = Star
     isImportant.className = "not-important"
   }
