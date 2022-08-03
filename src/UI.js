@@ -1,7 +1,7 @@
 import { format, add, parseISO } from "date-fns"
 import { addDays } from "date-fns/esm"
 import { allTasks } from "."
-import { addNewTask } from "./tasksUI"
+import { addNewTask, hideTaskForm } from "./tasksUI"
 const body = document.body
 export function loadUI() {
   body.innerHTML = `<div class="header"><h1>ToDo</h1></div>
@@ -68,18 +68,23 @@ export function filterTasks() {
 
   if (title.innerHTML.match("All Tasks")) {
     displayAllTasks()
+    hideTaskForm()
   } else if (title.innerHTML.match("Today")) {
     displayToday()
+    hideTaskForm()
   } else if (title.innerHTML.match("Next 7 Days")) {
     displayThisWeek()
+    hideTaskForm()
   } else if (title.innerHTML.match("Important")) {
     displayImportant()
+    hideTaskForm()
   }
 }
 
 export function displayAllTasks() {
   console.log(allTasks)
   clearContent()
+  showAddTaskBtn()
   allTasks.forEach((task) => {
     addNewTask(
       task.name,
@@ -95,6 +100,7 @@ function displayToday() {
   console.log(allTasks)
   const today = format(new Date(), "yyyy-MM-dd")
   clearContent()
+  hideAddTaskBtn()
   allTasks.forEach((task) => {
     if (task.dueDate === today) {
       addNewTask(
@@ -111,6 +117,7 @@ function displayToday() {
 
 function displayThisWeek() {
   clearContent()
+  hideAddTaskBtn()
   const today = format(new Date(), "yyyy-MM-dd")
   const nextWeek = format(addDays(parseISO(today), 7), "yyyy-MM-dd")
   allTasks.forEach((task) => {
@@ -128,6 +135,7 @@ function displayThisWeek() {
 }
 export function displayImportant() {
   clearContent()
+  showAddTaskBtn()
   allTasks.forEach((task) => {
     if (task.isImportant === true) {
       addNewTask(
@@ -143,6 +151,7 @@ export function displayImportant() {
 }
 export function displayProjectTasks(projectName) {
   clearContent()
+  showAddTaskBtn()
   allTasks.forEach((task) => {
     if (task.projectName === projectName) {
       addNewTask(
@@ -162,4 +171,12 @@ function clearContent() {
   tasks.forEach((task) => {
     task.remove()
   })
+}
+function hideAddTaskBtn() {
+  const addTaskBtn = document.querySelector("#add-new-task")
+  addTaskBtn.style.display = "none"
+}
+function showAddTaskBtn() {
+  const addTaskBtn = document.querySelector("#add-new-task")
+  addTaskBtn.style.display = ""
 }

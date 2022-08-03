@@ -94,17 +94,32 @@ function createNewTask() {
   } else {
     newTask = new Task(inputName, inputDetails, inputDate, taskID)
   }
+  if (title === "Important") {
+    newTask.isImportant = true
+    addNewTask(
+      newTask.name,
+      newTask.details,
+      newTask.dueDate,
+      newTask.id,
+      null,
+      true
+    )
+  } else {
+    addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
+  }
+
   allTasks.push(newTask)
-  addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
+
   taskID++
   hideTaskForm()
+
   console.log(allTasks)
 }
 function showTaskForm() {
   const taskForm = document.querySelector(".inputField")
   taskForm.style.display = "flex"
 }
-function hideTaskForm() {
+export function hideTaskForm() {
   const taskForm = document.querySelector(".inputField")
   const userInputs = document.querySelectorAll(".taskInputs")
   taskForm.style.display = "none"
