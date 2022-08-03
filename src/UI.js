@@ -1,4 +1,4 @@
-import { format, add } from "date-fns"
+import { format, add, parseISO } from "date-fns"
 import { addDays } from "date-fns/esm"
 import { allTasks } from "."
 import { addNewTask } from "./tasksUI"
@@ -78,27 +78,33 @@ export function filterTasks() {
 }
 
 function displayAllTasks() {
+  showAddTaskBtn()
+  console.log(allTasks)
   clearContent()
   allTasks.forEach((task) => {
-    addNewTask(task.name, task.details, task.dueDate)
+    addNewTask(task.name, task.details, task.dueDate, task.id)
   })
 }
 function displayToday() {
+  hideAddTaskBtn()
+  console.log(allTasks)
   const today = format(new Date(), "yyyy-MM-dd")
   clearContent()
   allTasks.forEach((task) => {
     if (task.dueDate === today) {
-      addNewTask(task.name, task.details, task.dueDate)
+      addNewTask(task.name, task.details, task.dueDate, task.id)
     }
   })
 }
 
 function displayThisWeek() {
+  hideAddTaskBtn()
+  clearContent()
   const today = format(new Date(), "yyyy-MM-dd")
-  const nextWeek = addDays(parseISO(today), 7)
+  const nextWeek = format(addDays(parseISO(today), 7), "yyyy-MM-dd")
   allTasks.forEach((task) => {
     if (task.dueDate >= today && task.dueDate <= nextWeek) {
-      addNewTask(task.name, task.details, task.dueDate)
+      addNewTask(task.name, task.details, task.dueDate, task.id)
     }
   })
 }
@@ -108,4 +114,14 @@ function clearContent() {
   tasks.forEach((task) => {
     task.remove()
   })
+}
+
+function hideAddTaskBtn() {
+  const addTaskBtn = document.querySelector("#add-new-task")
+  addTaskBtn.style.display = "none"
+}
+
+function showAddTaskBtn() {
+  const addTaskBtn = document.querySelector("#add-new-task")
+  addTaskBtn.style.display = ""
 }

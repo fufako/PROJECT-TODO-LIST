@@ -94,7 +94,9 @@ function deleteTask(e) {
   let index = allTasks.indexOf(selectedTask)
   allTasks.splice(index, 1)
   taskToDelete.remove()
+  console.log(index)
   console.log(allTasks)
+  taskID--
 }
 function findSelectedTask(id) {
   let selectedTask = allTasks.find((task) => task.id == id)
