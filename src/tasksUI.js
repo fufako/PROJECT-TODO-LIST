@@ -80,10 +80,18 @@ export function addNewTask(
 //Adds Task object to allTasks array
 let taskID = 0
 function createNewTask() {
+  const homeTitles = ["All Tasks", "Today", "Next 7 Days", "Important"]
+  const title = document.querySelector(".title").innerHTML
   const inputName = document.querySelector("#inputTitle").value
   const inputDetails = document.querySelector("#inputDetail").value
   const inputDate = document.querySelector("#inputDate").value
-  const newTask = new Task(inputName, inputDetails, inputDate, taskID)
+  let newTask = {}
+
+  if (homeTitles.includes(title) == false) {
+    newTask = new Task(inputName, inputDetails, inputDate, taskID, title)
+  } else {
+    newTask = new Task(inputName, inputDetails, inputDate, taskID)
+  }
   allTasks.push(newTask)
   addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
   taskID++

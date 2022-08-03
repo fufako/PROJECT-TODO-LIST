@@ -26,7 +26,7 @@ export function loadUI() {
         </div>
       </div>
       <div class="tasks-container">
-      <div class="title"> All tasks</div>
+      <div class="title"> All Tasks</div>
       <div class="add-task-container"><button id="add-new-task"> + </button> </div>
       <div class="inputField">
       <label>Title:</label>
@@ -81,7 +81,14 @@ export function displayAllTasks() {
   console.log(allTasks)
   clearContent()
   allTasks.forEach((task) => {
-    addNewTask(task.name, task.details, task.dueDate, task.id, task.isImportant)
+    addNewTask(
+      task.name,
+      task.details,
+      task.dueDate,
+      task.id,
+      task.projectName,
+      task.isImportant
+    )
   })
 }
 function displayToday() {
@@ -95,6 +102,7 @@ function displayToday() {
         task.details,
         task.dueDate,
         task.id,
+        task.projectName,
         task.isImportant
       )
     }
@@ -112,6 +120,7 @@ function displayThisWeek() {
         task.details,
         task.dueDate,
         task.id,
+        task.projectName,
         task.isImportant
       )
     }
@@ -126,6 +135,7 @@ export function displayImportant() {
         task.details,
         task.dueDate,
         task.id,
+        task.projectName,
         task.isImportant
       )
     }
