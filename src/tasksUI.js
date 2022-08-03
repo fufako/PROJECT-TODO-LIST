@@ -156,10 +156,12 @@ function importantHandler(e) {
     isImportantIcon.src = StarFull
     isImportantIcon.className = "important"
     allTasks[index].isImportant = true
+    localStorage.setItem("allTasks", JSON.stringify(allTasks))
   } else {
     isImportantIcon.src = Star
     isImportantIcon.className = "not-important"
     allTasks[index].isImportant = false
+    localStorage.setItem("allTasks", JSON.stringify(allTasks))
   }
 
   if (title.innerHTML.match("Important")) {

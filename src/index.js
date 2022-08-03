@@ -1,12 +1,16 @@
 import "./style.css"
 import { loadUI, createEventListener, displayAllTasks } from "./UI"
-import { projectAddingHelper } from "./projectsUI"
+import { projectAddingHelper, displayProjects } from "./projectsUI"
 import { taskAddingHelper } from "./tasksUI"
 export const allTasks = JSON.parse(localStorage.getItem("allTasks") || "[]")
+export const allProjects = JSON.parse(
+  localStorage.getItem("allProjects") || "[]"
+)
 console.log(allTasks)
-
+console.log(allProjects)
 loadUI()
 displayAllTasks()
+displayProjects()
 createEventListener()
 
 projectAddingHelper()
