@@ -1,4 +1,4 @@
-import { displayAllTasks, setTitle } from "./UI"
+import { displayAllTasks, setTitle, displayProjectTasks } from "./UI"
 export function projectAddingHelper() {
   const addProjectBtn = document.querySelector(".add-project-title")
   addProjectBtn.addEventListener("click", showProjectForm)
@@ -46,6 +46,7 @@ export function addProject() {
   const title = document.querySelector(".title")
   projectTitle.addEventListener("click", function () {
     title.innerHTML = projectTitle.innerText
+    displayProjectTasks(title.innerHTML)
   })
 
   hideProjectForm()
@@ -58,4 +59,3 @@ function deleteProject() {
   title.innerHTML = "All Tasks"
   displayAllTasks()
 }
-function displayProjectTasks() {}

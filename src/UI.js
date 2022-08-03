@@ -141,6 +141,21 @@ export function displayImportant() {
     }
   })
 }
+export function displayProjectTasks(projectName) {
+  clearContent()
+  allTasks.forEach((task) => {
+    if (task.projectName === projectName) {
+      addNewTask(
+        task.name,
+        task.details,
+        task.dueDate,
+        task.id,
+        task.projectName,
+        task.isImportant
+      )
+    }
+  })
+}
 
 function clearContent() {
   const tasks = document.querySelectorAll(".new-task")
