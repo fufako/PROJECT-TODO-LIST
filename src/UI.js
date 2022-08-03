@@ -78,7 +78,6 @@ export function filterTasks() {
 }
 
 function displayAllTasks() {
-  showAddTaskBtn()
   console.log(allTasks)
   clearContent()
   allTasks.forEach((task) => {
@@ -86,7 +85,6 @@ function displayAllTasks() {
   })
 }
 function displayToday() {
-  hideAddTaskBtn()
   console.log(allTasks)
   const today = format(new Date(), "yyyy-MM-dd")
   clearContent()
@@ -98,7 +96,6 @@ function displayToday() {
 }
 
 function displayThisWeek() {
-  hideAddTaskBtn()
   clearContent()
   const today = format(new Date(), "yyyy-MM-dd")
   const nextWeek = format(addDays(parseISO(today), 7), "yyyy-MM-dd")
@@ -114,14 +111,4 @@ function clearContent() {
   tasks.forEach((task) => {
     task.remove()
   })
-}
-
-function hideAddTaskBtn() {
-  const addTaskBtn = document.querySelector("#add-new-task")
-  addTaskBtn.style.display = "none"
-}
-
-function showAddTaskBtn() {
-  const addTaskBtn = document.querySelector("#add-new-task")
-  addTaskBtn.style.display = ""
 }
