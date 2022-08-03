@@ -37,4 +37,10 @@ export class Task {
   getID() {
     return this.id
   }
+  setIsImportant() {
+    this.isImportant = isImportant
+  }
+  getIsImportant() {
+    return this.isImportant
+  }
 }

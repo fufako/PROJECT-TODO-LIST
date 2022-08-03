@@ -5,6 +5,7 @@ import checkmarkImg from "./images/checkmark.png"
 import { Task } from "./Task"
 import { allTasks } from "./index"
 import removeArrayItem from "remove-item-from-array"
+import { displayImportant } from "./UI"
 
 export function taskAddingHelper() {
   const addTaskBtn = document.querySelector("#add-new-task")
@@ -17,9 +18,15 @@ export function taskAddingHelper() {
   cancelBtn.addEventListener("click", hideTaskForm)
 }
 //Adds to HTML
-export function addNewTask(taskName, taskDetails, taskDate, taskID) {
+export function addNewTask(
+  taskName,
+  taskDetails,
+  taskDate,
+  taskID,
+  checkImportant
+) {
   const taskContainer = document.querySelector(".tasks-container")
-
+  console.log(checkImportant)
   //Create new task DOM elements
 
   const newTask = document.createElement("div")
@@ -40,8 +47,15 @@ export function addNewTask(taskName, taskDetails, taskDate, taskID) {
   newTaskTitle.className = "new-task-title"
   newTaskDetails.className = "new-task-details"
   date.className = "new-task-date"
-  isImportant.src = Star
-  isImportant.className = "not-important"
+
+  if (checkImportant === true) {
+    isImportant.src = StarFull
+    isImportant.className = "important"
+  } else {
+    isImportant.src = Star
+    isImportant.className = "not-important"
+  }
+
   isImportant.addEventListener("click", importantHandler)
   deleteBtn.className = "delete-task-button"
   deleteBtn.src = DeleteImg
@@ -106,11 +120,22 @@ function findSelectedTask(id) {
 }
 function importantHandler(e) {
   const isImportantIcon = e.target
+  const title = document.querySelector(".title")
+  let taskToImportant = e.target.parentNode
+  let id = taskToImportant.dataset.id
+  let selectedTask = findSelectedTask(id)
+  let index = allTasks.indexOf(selectedTask)
   if (isImportantIcon.className === "not-important") {
     isImportantIcon.src = StarFull
     isImportantIcon.className = "important"
+    allTasks[index].isImportant = true
   } else {
     isImportantIcon.src = Star
     isImportantIcon.className = "not-important"
+    allTasks[index].isImportant = false
+  }
+
+  if (title.innerHTML.match("Important")) {
+    displayImportant()
   }
 }

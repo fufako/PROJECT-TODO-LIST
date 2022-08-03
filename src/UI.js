@@ -81,7 +81,7 @@ function displayAllTasks() {
   console.log(allTasks)
   clearContent()
   allTasks.forEach((task) => {
-    addNewTask(task.name, task.details, task.dueDate, task.id)
+    addNewTask(task.name, task.details, task.dueDate, task.id, task.isImportant)
   })
 }
 function displayToday() {
@@ -90,7 +90,13 @@ function displayToday() {
   clearContent()
   allTasks.forEach((task) => {
     if (task.dueDate === today) {
-      addNewTask(task.name, task.details, task.dueDate, task.id)
+      addNewTask(
+        task.name,
+        task.details,
+        task.dueDate,
+        task.id,
+        task.isImportant
+      )
     }
   })
 }
@@ -101,7 +107,27 @@ function displayThisWeek() {
   const nextWeek = format(addDays(parseISO(today), 7), "yyyy-MM-dd")
   allTasks.forEach((task) => {
     if (task.dueDate >= today && task.dueDate <= nextWeek) {
-      addNewTask(task.name, task.details, task.dueDate, task.id)
+      addNewTask(
+        task.name,
+        task.details,
+        task.dueDate,
+        task.id,
+        task.isImportant
+      )
+    }
+  })
+}
+export function displayImportant() {
+  clearContent()
+  allTasks.forEach((task) => {
+    if (task.isImportant === true) {
+      addNewTask(
+        task.name,
+        task.details,
+        task.dueDate,
+        task.id,
+        task.isImportant
+      )
     }
   })
 }
