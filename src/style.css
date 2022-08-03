@@ -109,11 +109,19 @@ h3 {
 .new-task-date {
   margin: 0 40px;
 }
-.new-task img {
+
+.delete-task-button {
   width: 40px;
   height: 40px;
   margin: 0 20px;
 }
+.not-important,
+.important {
+  width: 40px;
+  height: 40px;
+  margin: 0 20px;
+}
+
 .new-task-details {
   font-size: 0.875rem;
   white-space: pre-wrap;

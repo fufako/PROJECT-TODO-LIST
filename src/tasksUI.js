@@ -41,6 +41,8 @@ export function addNewTask(taskName, taskDetails, taskDate, taskID) {
   newTaskDetails.className = "new-task-details"
   date.className = "new-task-date"
   isImportant.src = Star
+  isImportant.className = "not-important"
+  isImportant.addEventListener("click", importantHandler)
   deleteBtn.className = "delete-task-button"
   deleteBtn.src = DeleteImg
   deleteBtn.addEventListener("click", deleteTask)
@@ -101,4 +103,14 @@ function deleteTask(e) {
 function findSelectedTask(id) {
   let selectedTask = allTasks.find((task) => task.id == id)
   if (selectedTask) return selectedTask
+}
+function importantHandler(e) {
+  const isImportantIcon = e.target
+  if (isImportantIcon.className === "not-important") {
+    isImportantIcon.src = StarFull
+    isImportantIcon.className = "important"
+  } else {
+    isImportantIcon.src = Star
+    isImportantIcon.className = "not-important"
+  }
 }
