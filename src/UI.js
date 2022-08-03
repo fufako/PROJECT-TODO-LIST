@@ -77,7 +77,7 @@ export function filterTasks() {
   }
 }
 
-function displayAllTasks() {
+export function displayAllTasks() {
   console.log(allTasks)
   clearContent()
   allTasks.forEach((task) => {
