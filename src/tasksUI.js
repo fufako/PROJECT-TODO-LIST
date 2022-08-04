@@ -27,7 +27,6 @@ export function addNewTask(
   checkImportant
 ) {
   const taskContainer = document.querySelector(".tasks-container")
-  console.log(checkImportant)
   //Create new task DOM elements
 
   const newTask = document.createElement("div")
@@ -53,7 +52,6 @@ export function addNewTask(
     isImportant.src = StarFull
     isImportant.className = "important"
   } else {
-    console.log("yeah i was right")
     isImportant.src = Star
     isImportant.className = "not-important"
   }
@@ -113,8 +111,6 @@ function createNewTask() {
 
   taskID++
   hideTaskForm()
-
-  console.log(allTasks)
 }
 function showTaskForm() {
   const taskForm = document.querySelector(".inputField")
@@ -137,8 +133,6 @@ function deleteTask(e) {
   allTasks.splice(index, 1)
   localStorage.setItem("allTasks", JSON.stringify(allTasks))
   taskToDelete.remove()
-  console.log(index)
-  console.log(allTasks)
   taskID--
 }
 function findSelectedTask(id) {

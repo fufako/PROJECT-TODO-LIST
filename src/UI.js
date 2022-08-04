@@ -82,7 +82,6 @@ export function filterTasks() {
 }
 
 export function displayAllTasks() {
-  console.log(allTasks)
   clearContent()
   showAddTaskBtn()
   allTasks.forEach((task) => {
@@ -97,7 +96,6 @@ export function displayAllTasks() {
   })
 }
 function displayToday() {
-  console.log(allTasks)
   const today = format(new Date(), "yyyy-MM-dd")
   clearContent()
   hideAddTaskBtn()
