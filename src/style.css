@@ -138,6 +138,9 @@ h3 {
   margin-right: 8px;
   margin-top: 10px;
   flex-shrink: 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-origin: border-box;
 }
 #add-new-task {
   font-size: 1.5rem;

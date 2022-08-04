@@ -60,6 +60,8 @@ export function addNewTask(
   deleteBtn.className = "delete-task-button"
   deleteBtn.src = DeleteImg
   deleteBtn.addEventListener("click", deleteTask)
+  checkbox.dataset.checked = "false"
+  checkbox.addEventListener("click", markTask)
 
   newTaskTitle.innerHTML = taskName
   newTaskDetails.innerHTML = taskDetails
@@ -161,4 +163,17 @@ function importantHandler(e) {
   if (title.innerHTML.match("Important")) {
     displayImportant()
   }
+}
+function markTask(e) {
+  const checkbox = e.target
+  if (checkbox.dataset.checked === "false") {
+    checkbox.style.backgroundImage = `url(${checkmarkImg})`
+    checkbox.dataset.checked = "true"
+  } else {
+    checkbox.style.backgroundImage = ""
+    console.log("hehre")
+    checkbox.dataset.checked = "false"
+  }
+
+  console.log(checkbox)
 }
