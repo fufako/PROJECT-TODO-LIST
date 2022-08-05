@@ -16,41 +16,4 @@ export class Task {
     this.isDone = isDone
     this.isImportant = isImportant
   }
-  setName(name) {
-    this.name = name
-  }
-
-  getName() {
-    return this.name
-  }
-
-  setDetails() {
-    this.details = details
-  }
-
-  getDetails() {
-    return this.details
-  }
-
-  setDate(dueDate) {
-    this.dueDate = dueDate
-  }
-
-  getDate() {
-    return this.dueDate
-  }
-
-  setID() {
-    this.id = id
-  }
-
-  getID() {
-    return this.id
-  }
-  setIsImportant() {
-    this.isImportant = isImportant
-  }
-  getIsImportant() {
-    return this.isImportant
-  }
 }

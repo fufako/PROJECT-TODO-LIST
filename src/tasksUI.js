@@ -4,7 +4,6 @@ import DeleteImg from "./images/delete.png"
 import checkmarkImg from "./images/checkmark.png"
 import { Task } from "./Task"
 import { allTasks } from "./index"
-import removeArrayItem from "remove-item-from-array"
 import { displayImportant } from "./UI"
 
 export function taskAddingHelper() {
@@ -28,6 +27,7 @@ export function addNewTask(
   checkImportant
 ) {
   const taskContainer = document.querySelector(".tasks-container")
+
   //Create new task DOM elements
 
   const newTask = document.createElement("div")
@@ -49,6 +49,8 @@ export function addNewTask(
   newTaskDetails.className = "new-task-details"
   date.className = "new-task-date"
 
+  //Check if task is important or done for display
+
   if (checkImportant === true) {
     isImportant.src = StarFull
     isImportant.className = "important"
@@ -56,11 +58,11 @@ export function addNewTask(
     isImportant.src = Star
     isImportant.className = "not-important"
   }
-  if (checkDone === false) {
-    checkbox.style.backgroundImage = ``
-  } else {
+  if (checkDone === true) {
     checkbox.style.backgroundImage = `url(${checkmarkImg})`
   }
+
+  //Add event listeners to onclick elements of a task
 
   isImportant.addEventListener("click", importantHandler)
   deleteBtn.className = "delete-task-button"
@@ -68,6 +70,8 @@ export function addNewTask(
   deleteBtn.addEventListener("click", deleteTask)
   checkbox.dataset.checked = "false"
   checkbox.addEventListener("click", markTask)
+
+  // Fill task with data
 
   newTaskTitle.innerHTML = taskName
   newTaskDetails.innerHTML = taskDetails
@@ -85,21 +89,17 @@ export function addNewTask(
 
   taskContainer.appendChild(newTask)
 }
-//Adds Task object to allTasks array
+//Create and adds Task object to allTasks array
 let taskID = 0
 function createNewTask() {
-  const homeTitles = ["All Tasks", "Today", "Next 7 Days", "Important"]
   const title = document.querySelector(".title").innerHTML
   const inputName = document.querySelector("#inputTitle").value
   const inputDetails = document.querySelector("#inputDetail").value
   const inputDate = document.querySelector("#inputDate").value
   let newTask = {}
 
-  if (homeTitles.includes(title) == false) {
-    newTask = new Task(inputName, inputDetails, inputDate, taskID, title)
-  } else {
-    newTask = new Task(inputName, inputDetails, inputDate, taskID)
-  }
+  newTask = new Task(inputName, inputDetails, inputDate, taskID, title)
+
   if (title === "Important") {
     newTask.isImportant = true
     addNewTask(
@@ -107,11 +107,19 @@ function createNewTask() {
       newTask.details,
       newTask.dueDate,
       newTask.id,
-      null,
+      newTask.projectName,
+      false,
       true
     )
   } else {
-    addNewTask(newTask.name, newTask.details, newTask.dueDate, newTask.id)
+    addNewTask(
+      newTask.name,
+      newTask.details,
+      newTask.dueDate,
+      newTask.id,
+      false,
+      false
+    )
   }
   localStorage.setItem("newTask", JSON.stringify(newTask))
   allTasks.push(newTask)
@@ -134,35 +142,34 @@ export function hideTaskForm() {
 }
 
 function deleteTask(e) {
-  let taskToDelete = e.target.parentNode
-  let id = taskToDelete.dataset.id
-  let selectedTask = findSelectedTask(id)
-  let index = allTasks.indexOf(selectedTask)
-  allTasks.splice(index, 1)
+  const taskIndex = findSelectedTaskIndex(e)
+  allTasks.splice(taskIndex, 1)
   localStorage.setItem("allTasks", JSON.stringify(allTasks))
-  taskToDelete.remove()
+  e.target.parentNode.remove()
   taskID--
 }
-function findSelectedTask(id) {
-  let selectedTask = allTasks.find((task) => task.id == id)
-  if (selectedTask) return selectedTask
+function findSelectedTaskIndex(e) {
+  const taskToFind = e.target.parentNode
+  const id = taskToFind.dataset.id
+  const selectedTask = allTasks.find((task) => task.id == id)
+  const index = allTasks.indexOf(selectedTask)
+
+  return index
 }
 function importantHandler(e) {
   const isImportantIcon = e.target
   const title = document.querySelector(".title")
-  let taskToImportant = e.target.parentNode
-  let id = taskToImportant.dataset.id
-  let selectedTask = findSelectedTask(id)
-  let index = allTasks.indexOf(selectedTask)
+  const taskIndex = findSelectedTaskIndex(e)
+
   if (isImportantIcon.className === "not-important") {
     isImportantIcon.src = StarFull
     isImportantIcon.className = "important"
-    allTasks[index].isImportant = true
+    allTasks[taskIndex].isImportant = true
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
   } else {
     isImportantIcon.src = Star
     isImportantIcon.className = "not-important"
-    allTasks[index].isImportant = false
+    allTasks[taskIndex].isImportant = false
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
   }
 
@@ -172,10 +179,7 @@ function importantHandler(e) {
 }
 function markTask(e) {
   const checkbox = e.target
-  let taskToMark = e.target.parentNode
-  let id = taskToMark.dataset.id
-  let selectedTask = findSelectedTask(id)
-  let index = allTasks.indexOf(selectedTask)
+  let index = findSelectedTaskIndex(e)
   if (checkbox.dataset.checked === "false") {
     checkbox.style.backgroundImage = `url(${checkmarkImg})`
     checkbox.dataset.checked = "true"
@@ -188,6 +192,4 @@ function markTask(e) {
     allTasks[index].isDone = false
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
   }
-
-  console.log(allTasks)
 }

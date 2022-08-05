@@ -11,6 +11,5 @@ loadUI()
 displayAllTasks()
 displayProjects()
 createEventListener()
-
 projectAddingHelper()
 taskAddingHelper()
