@@ -85,34 +85,6 @@ function deleteProject() {
   title.innerHTML = "All Tasks"
   displayAllTasks()
 }
-function addProject2(localStorageProjectName) {
-  const projectsContainer = document.querySelector(".projects-container")
-  const projectForm = document.querySelector(".project-form")
-  const newProject = document.createElement("div")
-  newProject.className = "project-container"
-
-  const projectTitle = document.createElement("p")
-
-  const deleteBtn = document.createElement("button")
-  deleteBtn.innerHTML = "Delete"
-  deleteBtn.className = "delete-project-button"
-  deleteBtn.addEventListener("click", deleteProject)
-
-  const projectName = document.querySelector("#project-input")
-
-  projectTitle.textContent = localStorageProjectName
-
-  newProject.appendChild(projectTitle)
-  newProject.appendChild(deleteBtn)
-  projectsContainer.appendChild(newProject)
-
-  //Add event listener to new project so that title changes when user clicks on it
-  const title = document.querySelector(".title")
-  projectTitle.addEventListener("click", function () {
-    title.innerHTML = projectTitle.innerText
-    displayProjectTasks(title.innerHTML)
-  })
-}
 
 function clearProjects() {
   console.log("Clear")
