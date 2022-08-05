@@ -187,7 +187,6 @@ function markTask(e) {
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
   } else {
     checkbox.style.backgroundImage = ""
-    console.log("hehre")
     checkbox.dataset.checked = "false"
     allTasks[index].isDone = false
     localStorage.setItem("allTasks", JSON.stringify(allTasks))

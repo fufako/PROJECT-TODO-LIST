@@ -6,7 +6,6 @@ export const allTasks = JSON.parse(localStorage.getItem("allTasks") || "[]")
 export const allProjects = JSON.parse(
   localStorage.getItem("allProjects") || "[]"
 )
-console.log(allTasks)
 loadUI()
 displayAllTasks()
 displayProjects()

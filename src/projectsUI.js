@@ -60,7 +60,6 @@ function createProject() {
   localStorage.setItem("allProjects", JSON.stringify(allProjects))
 }
 export function displayProjects() {
-  console.log(allProjects)
   clearProjects()
   allProjects.forEach((project) => {
     addProject(project)
@@ -87,7 +86,6 @@ function deleteProject() {
 }
 
 function clearProjects() {
-  console.log("Clear")
   const projectsContainer = document.querySelector(".projects-container")
   projectsContainer.innerHTML = ""
 }
