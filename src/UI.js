@@ -18,8 +18,9 @@ export function loadUI() {
         <h3>Projects</h3>
         <p class="add-project-title">Add Project</p>
         <div class="project-form">
+        <p id="project-validation-message"> Cant be empty </p>
         <input type="text" id="project-input" placeholder="Enter Project Name" maxlength="24"/>
-        <button id="add-project">Add</button>
+        <button id="add-project-btn">Add</button>
         <button id="cancel">Cancel</button>
         </div>
         <div class="projects-container">
@@ -30,7 +31,9 @@ export function loadUI() {
       <div class="title"> All Tasks</div>
       <div class="add-task-container"><button id="add-new-task"> + </button> </div>
       <div class="inputField">
-      <label>Title:</label>
+      
+      <label>Title: </label>
+      <p id="task-validation-message"> Cant be empty </p>
       <input type="text" class="taskInputs" id="inputTitle" placeholder="What to do?" />
       <label>Details(optional):</label>
       <textarea
@@ -43,7 +46,7 @@ export function loadUI() {
       <label>Date(optional):</label>
       <input type="date" class="taskInputs" id="inputDate" />
       <div class="formButtons">
-        <input type="submit" class="add-task" value="Add" />
+        <input type="button" id="add-task-btn" class="add-task" value="Add" />
         <input type="button" class="cancel-task" value="Cancel" />
       </div>
     </div>

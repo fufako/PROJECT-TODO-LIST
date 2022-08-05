@@ -161,3 +161,13 @@ h3 {
   margin: 15px;
   border-radius: 5px;
 }
+#task-validation-message {
+  display: none;
+  background-color: aqua;
+  margin: 0;
+}
+#project-validation-message {
+  display: none;
+  background-color: aqua;
+  margin: 0;
+}

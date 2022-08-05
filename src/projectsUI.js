@@ -1,23 +1,30 @@
 import { allProjects, allTasks } from "."
+import { hideTaskForm } from "./tasksUI"
 import { displayAllTasks, setTitle, displayProjectTasks } from "./UI"
 export function projectAddingHelper() {
   const addProjectBtn = document.querySelector(".add-project-title")
   addProjectBtn.addEventListener("click", showProjectForm)
 
-  const addBtn = document.querySelector("#add-project")
-  addBtn.addEventListener("click", createProject)
+  const addBtn = document.querySelector("#add-project-btn")
+  addBtn.addEventListener("click", validateProject)
 
   const cancelBtn = document.querySelector("#cancel")
   cancelBtn.addEventListener("click", hideProjectForm)
 }
 
 export function showProjectForm() {
+  hideTaskForm()
+  console.log("wtf")
   const projectForm = document.querySelector(".project-form")
   projectForm.style.display = "inherit"
   document.querySelector("#project-input").focus()
 }
 
 export function hideProjectForm() {
+  const validationMessage = document.querySelector(
+    "#project-validation-message"
+  )
+  validationMessage.style.display = "none"
   const projectForm = document.querySelector(".project-form")
   const userInput = document.querySelector("#project-input")
   userInput.value = ""
@@ -47,6 +54,7 @@ export function addProject(projectName) {
   projectTitle.addEventListener("click", function () {
     title.innerHTML = projectTitle.innerText
     displayProjectTasks(title.innerHTML)
+    hideTaskForm()
   })
   const projectTitleContent = projectTitle.innerHTML
 
@@ -88,4 +96,17 @@ function deleteProject() {
 function clearProjects() {
   const projectsContainer = document.querySelector(".projects-container")
   projectsContainer.innerHTML = ""
+}
+function validateProject() {
+  const projectNameInput = document.querySelector("#project-input").value
+
+  const validationMessage = document.querySelector(
+    "#project-validation-message"
+  )
+  if (projectNameInput !== "") {
+    createProject()
+    validationMessage.style.display = "none"
+  } else {
+    validationMessage.style.display = "inherit"
+  }
 }

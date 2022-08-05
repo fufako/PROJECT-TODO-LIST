@@ -11,7 +11,7 @@ export function taskAddingHelper() {
   addTaskBtn.addEventListener("click", showTaskForm)
 
   const addBtn = document.querySelector(".add-task")
-  addBtn.addEventListener("click", createNewTask)
+  addBtn.addEventListener("click", validateTask)
 
   const cancelBtn = document.querySelector(".cancel-task")
   cancelBtn.addEventListener("click", hideTaskForm)
@@ -60,6 +60,7 @@ export function addNewTask(
   }
   if (checkDone === true) {
     checkbox.style.backgroundImage = `url(${checkmarkImg})`
+    newTaskInfo.style.textDecoration = "line-through"
   }
 
   //Add event listeners to onclick elements of a task
@@ -94,6 +95,7 @@ let taskID = 0
 function createNewTask() {
   const title = document.querySelector(".title").innerHTML
   const inputName = document.querySelector("#inputTitle").value
+  console.log(inputName)
   const inputDetails = document.querySelector("#inputDetail").value
   const inputDate = document.querySelector("#inputDate").value
   let newTask = {}
@@ -133,6 +135,9 @@ function showTaskForm() {
   taskForm.style.display = "flex"
 }
 export function hideTaskForm() {
+  const validationMessage = document.querySelector("#task-validation-message")
+  validationMessage.style.display = "none"
+
   const taskForm = document.querySelector(".inputField")
   const userInputs = document.querySelectorAll(".taskInputs")
   taskForm.style.display = "none"
@@ -179,16 +184,29 @@ function importantHandler(e) {
 }
 function markTask(e) {
   const checkbox = e.target
+  const checkboxParent = e.target.parentNode
   let index = findSelectedTaskIndex(e)
   if (checkbox.dataset.checked === "false") {
     checkbox.style.backgroundImage = `url(${checkmarkImg})`
     checkbox.dataset.checked = "true"
+    checkboxParent.style.textDecoration = "line-through"
     allTasks[index].isDone = true
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
   } else {
     checkbox.style.backgroundImage = ""
     checkbox.dataset.checked = "false"
+    checkboxParent.style.textDecoration = ""
     allTasks[index].isDone = false
     localStorage.setItem("allTasks", JSON.stringify(allTasks))
+  }
+}
+function validateTask() {
+  const taskNameInput = document.querySelector("#inputTitle").value
+  const validationMessage = document.querySelector("#task-validation-message")
+  if (taskNameInput !== "") {
+    createNewTask()
+    validationMessage.style.display = "none"
+  } else {
+    validationMessage.style.display = "inherit"
   }
 }
