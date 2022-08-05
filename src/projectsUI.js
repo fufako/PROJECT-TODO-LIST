@@ -1,11 +1,11 @@
-import { allProjects } from "."
+import { allProjects, allTasks } from "."
 import { displayAllTasks, setTitle, displayProjectTasks } from "./UI"
 export function projectAddingHelper() {
   const addProjectBtn = document.querySelector(".add-project-title")
   addProjectBtn.addEventListener("click", showProjectForm)
 
   const addBtn = document.querySelector("#add-project")
-  addBtn.addEventListener("click", addProject)
+  addBtn.addEventListener("click", createProject)
 
   const cancelBtn = document.querySelector("#cancel")
   cancelBtn.addEventListener("click", hideProjectForm)
@@ -23,7 +23,7 @@ export function hideProjectForm() {
   userInput.value = ""
   projectForm.style.display = "none"
 }
-export function addProject() {
+export function addProject(projectName) {
   const projectsContainer = document.querySelector(".projects-container")
   const projectForm = document.querySelector(".project-form")
   const newProject = document.createElement("div")
@@ -36,9 +36,7 @@ export function addProject() {
   deleteBtn.className = "delete-project-button"
   deleteBtn.addEventListener("click", deleteProject)
 
-  const projectName = document.querySelector("#project-input")
-
-  projectTitle.textContent = projectName.value
+  projectTitle.textContent = projectName
 
   newProject.appendChild(projectTitle)
   newProject.appendChild(deleteBtn)
@@ -51,22 +49,37 @@ export function addProject() {
     displayProjectTasks(title.innerHTML)
   })
   const projectTitleContent = projectTitle.innerHTML
-  localStorage.setItem("projectTitleContent", projectTitleContent)
-  allProjects.push(projectTitleContent)
-  localStorage.setItem("allProjects", JSON.stringify(allProjects))
+
   hideProjectForm()
 }
+function createProject() {
+  const projectName = document.querySelector("#project-input").value
+  addProject(projectName)
+  localStorage.setItem("projectName", projectName)
+  allProjects.push(projectName)
+  localStorage.setItem("allProjects", JSON.stringify(allProjects))
+}
 export function displayProjects() {
+  console.log(allProjects)
+  clearProjects()
   allProjects.forEach((project) => {
-    addProject2(project)
+    addProject(project)
   })
 }
 
 function deleteProject() {
   this.parentElement.remove()
-  const index = allProjects.indexOf(this.parentElement.firstChild.innerHTML)
+  const projectTitle = this.parentElement.firstChild.innerHTML
+  const index = allProjects.indexOf(projectTitle)
   allProjects.splice(index, 1)
+  for (let i = allTasks.length - 1; i >= 0; --i) {
+    if (allTasks[i].projectName == projectTitle) {
+      allTasks.splice(i, 1)
+    }
+  }
+  localStorage.setItem("allTasks", JSON.stringify(allTasks))
   localStorage.setItem("allProjects", JSON.stringify(allProjects))
+
   //Change title after deleting project
   const title = document.querySelector(".title")
   title.innerHTML = "All Tasks"
@@ -99,4 +112,10 @@ function addProject2(localStorageProjectName) {
     title.innerHTML = projectTitle.innerText
     displayProjectTasks(title.innerHTML)
   })
+}
+
+function clearProjects() {
+  console.log("Clear")
+  const projectsContainer = document.querySelector(".projects-container")
+  projectsContainer.innerHTML = ""
 }

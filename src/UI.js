@@ -17,12 +17,13 @@ export function loadUI() {
         
         <h3>Projects</h3>
         <p class="add-project-title">Add Project</p>
-        <div class="projects-container">
         <div class="project-form">
         <input type="text" id="project-input" placeholder="Enter Project Name" maxlength="24"/>
         <button id="add-project">Add</button>
         <button id="cancel">Cancel</button>
         </div>
+        <div class="projects-container">
+        
         </div>
       </div>
       <div class="tasks-container">
