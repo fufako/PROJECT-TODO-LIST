@@ -24,6 +24,7 @@ export function addNewTask(
   taskDate,
   taskID,
   projectName,
+  checkDone,
   checkImportant
 ) {
   const taskContainer = document.querySelector(".tasks-container")
@@ -54,6 +55,11 @@ export function addNewTask(
   } else {
     isImportant.src = Star
     isImportant.className = "not-important"
+  }
+  if (checkDone === false) {
+    checkbox.style.backgroundImage = ``
+  } else {
+    checkbox.style.backgroundImage = `url(${checkmarkImg})`
   }
 
   isImportant.addEventListener("click", importantHandler)
@@ -166,14 +172,22 @@ function importantHandler(e) {
 }
 function markTask(e) {
   const checkbox = e.target
+  let taskToMark = e.target.parentNode
+  let id = taskToMark.dataset.id
+  let selectedTask = findSelectedTask(id)
+  let index = allTasks.indexOf(selectedTask)
   if (checkbox.dataset.checked === "false") {
     checkbox.style.backgroundImage = `url(${checkmarkImg})`
     checkbox.dataset.checked = "true"
+    allTasks[index].isDone = true
+    localStorage.setItem("allTasks", JSON.stringify(allTasks))
   } else {
     checkbox.style.backgroundImage = ""
     console.log("hehre")
     checkbox.dataset.checked = "false"
+    allTasks[index].isDone = false
+    localStorage.setItem("allTasks", JSON.stringify(allTasks))
   }
 
-  console.log(checkbox)
+  console.log(allTasks)
 }

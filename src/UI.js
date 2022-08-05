@@ -91,6 +91,7 @@ export function displayAllTasks() {
       task.dueDate,
       task.id,
       task.projectName,
+      task.isDone,
       task.isImportant
     )
   })
@@ -107,6 +108,7 @@ function displayToday() {
         task.dueDate,
         task.id,
         task.projectName,
+        task.isDone,
         task.isImportant
       )
     }
@@ -126,6 +128,7 @@ function displayThisWeek() {
         task.dueDate,
         task.id,
         task.projectName,
+        task.isDone,
         task.isImportant
       )
     }
@@ -142,6 +145,7 @@ export function displayImportant() {
         task.dueDate,
         task.id,
         task.projectName,
+        task.isDone,
         task.isImportant
       )
     }
@@ -158,6 +162,7 @@ export function displayProjectTasks(projectName) {
         task.dueDate,
         task.id,
         task.projectName,
+        task.isDone,
         task.isImportant
       )
     }
