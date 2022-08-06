@@ -2,16 +2,15 @@
 body {
   margin: 0;
   font-family: "Mouse Memoirs", sans-serif;
-}
-* {
-  outline: 1px solid red;
+  color: #fffaf2;
 }
 .header {
-  background-color: antiquewhite;
+  background-color: #6f5f5e;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fffaf2;
 }
 h1 {
   margin: 0;
@@ -19,7 +18,7 @@ h1 {
 h3 {
   font-size: 2rem;
   margin: 0;
-  border-bottom: 3px double black;
+  border-bottom: 3px double #fffaf2;
 }
 .container {
   display: flex;
@@ -27,13 +26,22 @@ h3 {
 .sidebar {
   padding: 30px;
   width: 15%;
+  background-color: #6f5f5e;
+  height: 100vh;
+  color: #fffaf2;
+  min-width: 250px;
 }
 .tasks-filter p {
   margin: 20px;
   font-size: 1.5rem;
   width: fit-content;
   cursor: pointer;
+  text-align: center;
 }
+.tasks-filter p:hover {
+  color: #e6d5d5;
+}
+
 .projects-container p {
   margin: 20px;
   font-size: 1.5rem;
@@ -46,6 +54,9 @@ h3 {
   width: fit-content;
   cursor: pointer;
 }
+.add-project-title:hover {
+  color: #e6d5d5;
+}
 .project-form {
   text-align: center;
   display: none;
@@ -53,11 +64,22 @@ h3 {
 }
 .project-form input {
   width: 100%;
+  height: 25px;
+  border-radius: 5px;
+  background-color: #fffaf2;
 }
 .project-form button {
   width: 80px;
   height: 30px;
   font-size: 1rem;
+  margin: 5px;
+  background-color: #fffaf2;
+  border: 0px;
+  border-radius: 5px;
+  color: #6f5f5e;
+}
+.project-form button:hover {
+  background-color: #e6d5d5;
 }
 .project-container {
   font-size: 1.5rem;
@@ -70,24 +92,46 @@ h3 {
   margin: 0;
   flex: 1;
 }
+.project-container p:hover {
+  color: #e6d5d5;
+}
 .delete-project-button {
   font-size: 1.2rem;
   font-family: "Mouse Memoirs", sans-serif;
   background-color: transparent;
   border: 0;
   border-radius: 20px;
+  background-color: #fffaf2;
+  color: #6f5f5e;
 }
 .delete-project-button:hover {
-  background-color: beige;
+  background-color: #e6d5d5;
 }
 .tasks-container {
   flex-grow: 1;
+  background-color: #fffaf2;
 }
 .inputField {
   display: none;
   flex-direction: column;
   box-sizing: content-box;
+  color: #6f5f5e;
+  margin: 0 20px;
 }
+.formButtons input {
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
+  margin: 5px;
+  background-color: #6f5f5e;
+  border: 0px;
+  border-radius: 5px;
+  color: #fffaf2;
+}
+.formButtons input:hover {
+  color: #e6d5d5;
+}
+
 .add-task-container {
   text-align: center;
 }
@@ -102,6 +146,7 @@ h3 {
   transition: transform 100ms ease-in-out;
   align-items: center;
   justify-content: center;
+  color: #6f5f5e;
 }
 .new-task-info {
   flex: 1;
@@ -114,12 +159,14 @@ h3 {
   width: 40px;
   height: 40px;
   margin: 0 20px;
+  cursor: pointer;
 }
 .not-important,
 .important {
   width: 40px;
   height: 40px;
   margin: 0 20px;
+  cursor: pointer;
 }
 
 .new-task-details {
@@ -133,7 +180,7 @@ h3 {
 .checkbox {
   width: 13px;
   height: 13px;
-  border: solid 2px var(--textColor);
+  border: solid 2px #6f5f5e;
   border-radius: 50%;
   margin-right: 8px;
   margin-top: 10px;
@@ -146,16 +193,18 @@ h3 {
   font-size: 1.5rem;
   height: 40px;
   width: 120px;
-  background-color: aquamarine;
+  background-color: #6f5f5e;
   border: 0;
   cursor: pointer;
+  border-radius: 5px;
+  color: #fffaf2;
 }
 #add-new-task:hover {
-  background-color: rgba(127, 255, 212, 0.6);
+  background-color: #a39090;
 }
 .title {
   font-size: 2rem;
-  background-color: aquamarine;
+  background-color: #6f5f5e;
   text-align: center;
   padding: 20px;
   margin: 15px;
@@ -163,11 +212,11 @@ h3 {
 }
 #task-validation-message {
   display: none;
-  background-color: aqua;
+  color: red;
   margin: 0;
 }
 #project-validation-message {
   display: none;
-  background-color: aqua;
+  color: red;
   margin: 0;
 }

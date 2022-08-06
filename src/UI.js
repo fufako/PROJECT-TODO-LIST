@@ -18,7 +18,7 @@ export function loadUI() {
         <h3>Projects</h3>
         <p class="add-project-title">Add Project</p>
         <div class="project-form">
-        <p id="project-validation-message"> Cant be empty </p>
+        <p id="project-validation-message"> Project name can't be empty </p>
         <input type="text" id="project-input" placeholder="Enter Project Name" maxlength="24"/>
         <button id="add-project-btn">Add</button>
         <button id="cancel">Cancel</button>
@@ -33,7 +33,7 @@ export function loadUI() {
       <div class="inputField">
       
       <label>Title: </label>
-      <p id="task-validation-message"> Cant be empty </p>
+      <p id="task-validation-message"> Task title can't be empty </p>
       <input type="text" class="taskInputs" id="inputTitle" placeholder="What to do?" />
       <label>Details(optional):</label>
       <textarea
