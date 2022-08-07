@@ -19,6 +19,7 @@ h3 {
   font-size: 2rem;
   margin: 0;
   border-bottom: 3px double #fffaf2;
+  padding: 10px;
 }
 .container {
   display: flex;
@@ -29,7 +30,7 @@ h3 {
   background-color: #6f5f5e;
   height: 100vh;
   color: #fffaf2;
-  min-width: 250px;
+  min-width: 200px;
 }
 .tasks-filter p {
   margin: 20px;
@@ -110,6 +111,7 @@ h3 {
 .tasks-container {
   flex-grow: 1;
   background-color: #fffaf2;
+  min-width: 350px;
 }
 .inputField {
   display: none;
@@ -137,13 +139,9 @@ h3 {
 }
 .new-task {
   display: flex;
-  align-items: flex-start;
-  height: auto;
-  padding: 0;
-  padding-left: 5px;
-  margin-bottom: 5px;
-  border: solid 1.5px var(--textColor);
-  transition: transform 100ms ease-in-out;
+  margin-left: 10px;
+  min-width: 350px;
+
   align-items: center;
   justify-content: center;
   color: #6f5f5e;
@@ -176,14 +174,14 @@ h3 {
 }
 .new-task-title {
   font-size: 1.2rem;
+  flex-wrap: wrap;
 }
 .checkbox {
   width: 13px;
   height: 13px;
   border: solid 2px #6f5f5e;
   border-radius: 50%;
-  margin-right: 8px;
-  margin-top: 10px;
+  margin: 10px 8px 0 10px;
   flex-shrink: 0;
   background-size: 100%;
   background-repeat: no-repeat;

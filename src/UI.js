@@ -34,7 +34,7 @@ export function loadUI() {
       
       <label>Title: </label>
       <p id="task-validation-message"> Task title can't be empty </p>
-      <input type="text" class="taskInputs" id="inputTitle" placeholder="What to do?" />
+      <input type="text" class="taskInputs" id="inputTitle" placeholder="What to do?"  maxlength="50"/>
       <label>Details(optional):</label>
       <textarea
         type="text"
@@ -42,6 +42,7 @@ export function loadUI() {
         class="taskInputs"
         placeholder="How about nothing?"
         wrap="hard"
+        maxlength="50"
       ></textarea>
       <label>Date(optional):</label>
       <input type="date" class="taskInputs" id="inputDate" />
