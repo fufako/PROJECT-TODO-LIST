@@ -122,6 +122,7 @@ h3 {
   border-radius: 20px;
   background-color: #fffaf2;
   color: #6f5f5e;
+  margin: 5px;
 }
 .delete-project-button:hover {
   background-color: #e6d5d5;
@@ -271,7 +272,8 @@ h3 {
   }
   .new-task {
     max-width: 400px;
-    margin-top: 10px;
+    margin: 20px;
+    width: auto;
   }
   .new-task-title {
     width: 120px;
@@ -287,8 +289,16 @@ h3 {
     font-size: 1rem;
   }
   #footer {
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
+  }
+  .not-important,
+  .important,
+  .delete-task-button {
+    width: 30px;
+    height: 30px;
+  }
+  .project-container {
+    border-bottom: 3px double #fffaf2;
   }
 }

@@ -52,13 +52,7 @@ export function loadUI() {
       </div>
     </div>
       </div>
-      
-    </div>
-    <div id="footer" style="text-align: center;
-    font-size: large;
-    color: #fffaf2;
-    background-color: #6f5f5e;
-    padding: 10px;">
+      <div id="footer">
       fufako
       <a href="https://github.com/fufako" id="git" target="_blank">
         <i
@@ -68,6 +62,8 @@ export function loadUI() {
         ></i
       ></a>
     </div>
+    </div>
+   
     `
 }
 export const createEventListener = () => {
