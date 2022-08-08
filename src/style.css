@@ -9,11 +9,14 @@ body {
   height: 10vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+
   color: #fffaf2;
 }
 h1 {
   margin: 0;
+  padding-left: 30px;
+  font-size: 4rem;
 }
 h3 {
   font-size: 2rem;
@@ -30,14 +33,13 @@ h3 {
   background-color: #6f5f5e;
   height: 100vh;
   color: #fffaf2;
-  min-width: 200px;
+  min-width: 120px;
 }
 .tasks-filter p {
   margin: 20px;
   font-size: 1.5rem;
   width: fit-content;
   cursor: pointer;
-  text-align: center;
 }
 .tasks-filter p:hover {
   color: #e6d5d5;
@@ -175,6 +177,7 @@ h3 {
 .new-task-title {
   font-size: 1.2rem;
   flex-wrap: wrap;
+  word-break: break-all;
 }
 .checkbox {
   width: 13px;
@@ -217,4 +220,58 @@ h3 {
   display: none;
   color: red;
   margin: 0;
+}
+
+@media (max-width: 430px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    flex: 1;
+    width: auto;
+    padding: 0;
+    text-align: center;
+  }
+  .tasks-filter {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    justify-items: center;
+    align-items: center;
+  }
+  /* .tasks-filter p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+
+  .add-project-title {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+  }
+  h3 {
+    text-align: center;
+  }
+
+  .header {
+    background-color: #fffaf2;
+    color: #6f5f5e;
+  }
+  .new-task {
+    max-width: 400px;
+    margin-top: 10px;
+  }
+  .new-task-title {
+    width: 120px;
+    flex-wrap: wrap;
+  }
+  .title {
+    padding: 0;
+    font-size: 1.7rem;
+  }
+  #add-new-task {
+    height: 20px;
+    width: 60px;
+    font-size: 1rem;
+  }
 }
