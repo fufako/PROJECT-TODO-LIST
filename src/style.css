@@ -20,6 +20,9 @@ body {
   background-color: #6f5f5e;
   padding: 10px;
 }
+a {
+  color: #fffaf2;
+}
 a:visited {
   color: #fffaf2;
 }
