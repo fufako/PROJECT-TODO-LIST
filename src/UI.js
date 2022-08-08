@@ -54,7 +54,11 @@ export function loadUI() {
       </div>
       
     </div>
-    <div id="footer">
+    <div id="footer" style="text-align: center;
+    font-size: large;
+    color: #fffaf2;
+    background-color: #6f5f5e;
+    padding: 10px;">
       fufako
       <a href="https://github.com/fufako" id="git" target="_blank">
         <i
