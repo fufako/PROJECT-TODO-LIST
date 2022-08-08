@@ -53,7 +53,18 @@ export function loadUI() {
     </div>
       </div>
       
-    </div>`
+    </div>
+    <div id="footer">
+      fufako
+      <a href="https://github.com/fufako" id="git" target="_blank">
+        <i
+          class="fa fa-github"
+          style="font-size: 24px"
+          href="https://github.com/fufako"
+        ></i
+      ></a>
+    </div>
+    `
 }
 export const createEventListener = () => {
   const filterButtons = document.querySelectorAll("div.tasks-filter > p")

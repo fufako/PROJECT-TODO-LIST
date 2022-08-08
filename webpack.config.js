@@ -15,6 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Todo",
       template: "./src/template.html",
+      favicon: "./src/images/todo.png",
     }),
   ],
   devtool: "inline-source-map",
