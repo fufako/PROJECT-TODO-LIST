@@ -264,6 +264,7 @@ h3 {
   .header {
     background-color: #fffaf2;
     color: #6f5f5e;
+    justify-content: center;
   }
   .new-task {
     max-width: 400px;
@@ -283,6 +284,8 @@ h3 {
     font-size: 1rem;
   }
   #footer {
-    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 }
