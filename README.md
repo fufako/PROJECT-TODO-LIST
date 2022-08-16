@@ -1,5 +1,6 @@
 # TO-DO LIST
 Todo list app that allows users to create a task or a project, mark them as essential or done and delete them.
+Tasks are saved in Local Storage.
 
 ## Live app
 
